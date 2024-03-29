@@ -267,3 +267,100 @@ function loadTexture(gl: WebGLRenderingContext, url: string) {
 function isPowerOf2(value: number) {
   return (value & (value - 1)) === 0;
 }
+
+
+/**
+ * NEW NOTES:
+ * 
+ * WebGL is a JS version of the embedded system and we will use version 2 or 3 and its close to**
+ * 
+ * this is a language to render 2D and 3D graphics and uses the canvas element with the WebGL API (we do get context with 
+ * WebGL in the quotes instead of 2D like we have been doing with canvas)**
+ * 
+ * WebGL is very low level and we are interacting with our scene and we are**
+ * 
+ * at a local level WebGL it takes a lot of work to make a cube to spin around (we can add some libraries to make it easier
+ * for us though)**
+ * 
+ * each of these demos are on a different branch and we need to run npm install every time we move from branch to branch otherwise
+ * it will break**
+ * 
+ * main branch:
+ * 
+ * uses webgl2 (webgl3 though)**
+ * 
+ * uses glmatrix which**
+ * its a spinning RIT cube and te code is a lot for it 
+ * what should we know if we dont have to know how the code works**
+ * 
+ * we get the webgl context and we alert if nothing was nintialzied and we clear the background
+ * then it gets more complicated then we write a shader program to deal with the vectors as well as a fragment shader
+ * and we initialize those things and set those up in a program and load the texture and have rendering and have request animation frame
+ * to render and we make our rotation based on delta time and not by frames for render then we draw the scene 
+ * 
+ * the init buffers file gives us our buffers and our position are where are the vertciies in 3D space and where do we map
+ * pixels for the position and normal postion is for lighting and based on where the light is how bright or dim should we 
+ * color the pixel and for indicies we say what vertex are**
+ * 
+ * we load up arrays with numbers in it to load up the different faces and we send the data to the** so it knows what to do with them**
+ * 
+ * in draw scene it happens every frame and we clear it** out and we set falgs for handling depth and we clear the screen and set up
+ * the camera and move and rotate things aronund and pull in things from the buffers
+ * 
+ * three.js exists and the next demo follows three.js and uses the npm paackage3 and if we have @types it means we are using a
+ * type libraries which give us typescript for libararies that dont use it on their own (usually somewhat our of date rather than
+ * the JS version of libraries)**
+ * 
+ * we should always npm install when we switch branches then we wont get error when we switch rbanches**
+ * the result is very similar but the shade gets dark dramatically for hald a second 
+ * 
+ * SECOND BRANCH:
+ * 
+ * we do import * as three form three to use the three.js library which**
+ * and we remove the rest of the files we are working with and we dont need a buffer, draw scene, or shaders**
+ * 
+ * we get canvas from renderer and we dont have one in the HTML and it gets created in JS when we render it and we use
+ * the colorspace to have depth for colors otherwise it would look washed out so we have to say what color space the original
+ * image is**
+ * we use the map: texture and the color as its baseline to**
+ * 
+ * the mesh is a combination of the geometry and material so it can be rendered together and we have a point light for directional light
+ * we tell the renderer to render at the scene and camera and it knows which canvas to use because we got the canvas from our JS**
+ * 
+ * babylon.js BRANCH 3:
+ * 
+ * THERE IS A DEFAULT COLOR FOR THE BACKGROUND AND THE CUBE IS MORE SHINIER as we rotate
+ * we get more camera controls and we can move around to see parts of the cube with our (mouse or keys)**
+ * 
+ * code is similar to branch 2**
+ * 
+ * when we do imports we have to know what directy looks like to use these thing sin babylon or we coudl import everything
+ * from babylon and use things we need**
+ * 
+ * we set in canvas from HTML then pass it into JS then pass it into the engine and the attach control gets the mouse and camera input
+ * on the camera and we set up light with hemouspheric light for babylon and we have light intensity and we load the texture for
+ * the tiger face and we set the box and load the material and we give the engine a callback to do the rotation and the scene will do it per
+ * frame**
+ * 
+ * babylon.js has examples as well as three.js and it focusses more on rendering and aspect of things compares to three.js
+ * babylon.js playground and we can have rendered output and code and we can mess with code and see the output without
+ * having an editor opened up**
+ * 
+ * babylon is more clunkier than three.js and it works differently than webGL than three.js does (works more closer with webGL)
+ * 
+ * REDGL2:
+ * 
+ * no information on npm install and we just load the script form GitHub and the last commit was 7 months ago and some of the
+ * files have not been changed since 2 years ago (not as maintined than other libraries)**
+ * 
+ * webGL is not just used for 3D rendering and there a couple 2D libraries such as pixi.js and phaser which are two 2D libraries
+ * pixi.js has a lot of different features and has good documentation and has lots of examples on how to work with things 
+ * 
+ * phaser is a game framework and it works with games in the DOM and pixi is graphics rendering and phaser is more game specific
+ * 
+ * three.js, babylon.js, and REDGL2 are 3D rendering in WebGL (phaser and pixi.js are 2D and in WebGL)**
+ * 
+ * 
+ * 
+ * 
+ */
