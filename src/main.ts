@@ -19,7 +19,7 @@ function main() {
   canvas.width = 800;
   canvas.height = 600;
   // Initialize the GL context
-  const gl = canvas.getContext('webgl');
+  const gl = canvas.getContext('webgl') as WebGLRenderingContext;
 
   // Only continue if WebGL is available and working
   if (gl === null) {
@@ -84,6 +84,11 @@ function main() {
   // for the vertices and so forth is established.
   const shaderProgram = initShaderProgram(gl, vsSource, fsSource);
 
+  // bail if we were unable to setup the program
+  if (shaderProgram === null) {
+    return;
+  }
+
   // Collect all the info needed to use the shader program.
   // Look up which attributes our shader program is using
   // for aVertexPosition, aVertexColor and also
@@ -118,7 +123,7 @@ function main() {
   let then = 0;
 
   // Draw the scene repeatedly
-  function render(now) {
+  function render(now: number) {
     now *= 0.001; // convert to seconds
     deltaTime = now - then;
     then = now;
@@ -134,13 +139,21 @@ function main() {
 //
 // Initialize a shader program, so WebGL knows how to draw our data
 //
-function initShaderProgram(gl, vsSource, fsSource) {
+function initShaderProgram(
+  gl: WebGLRenderingContext,
+  vsSource: string,
+  fsSource: string,
+) {
   const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vsSource);
   const fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fsSource);
 
-  // Create the shader program
+  // bail if we were unable to create the shaders
+  if (vertexShader === null || fragmentShader === null) {
+    return null;
+  }
 
-  const shaderProgram = gl.createProgram();
+  // Create the shader program
+  const shaderProgram = gl.createProgram() as WebGLProgram;
   gl.attachShader(shaderProgram, vertexShader);
   gl.attachShader(shaderProgram, fragmentShader);
   gl.linkProgram(shaderProgram);
@@ -163,8 +176,8 @@ function initShaderProgram(gl, vsSource, fsSource) {
 // creates a shader of the given type, uploads the source and
 // compiles it.
 //
-function loadShader(gl, type, source) {
-  const shader = gl.createShader(type);
+function loadShader(gl: WebGLRenderingContext, type: number, source: string) {
+  const shader = gl.createShader(type) as WebGLShader;
 
   // Send the source to the shader object
 
@@ -191,7 +204,7 @@ function loadShader(gl, type, source) {
 // Initialize a texture and load an image.
 // When the image finished loading copy it into the texture.
 //
-function loadTexture(gl, url) {
+function loadTexture(gl: WebGLRenderingContext, url: string) {
   const texture = gl.createTexture();
   gl.bindTexture(gl.TEXTURE_2D, texture);
 
@@ -251,6 +264,6 @@ function loadTexture(gl, url) {
   return texture;
 }
 
-function isPowerOf2(value) {
+function isPowerOf2(value: number) {
   return (value & (value - 1)) === 0;
 }

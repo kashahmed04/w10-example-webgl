@@ -1,6 +1,6 @@
 // code taken from https://github.com/mdn/dom-examples/blob/main/webgl-examples/tutorial/sample7/init-buffers.js
 
-function initBuffers(gl) {
+function initBuffers(gl: WebGLRenderingContext) {
   const positionBuffer = initPositionBuffer(gl);
 
   const textureCoordBuffer = initTextureBuffer(gl);
@@ -17,7 +17,7 @@ function initBuffers(gl) {
   };
 }
 
-function initPositionBuffer(gl) {
+function initPositionBuffer(gl: WebGLRenderingContext) {
   // Create a buffer for the square's positions.
   const positionBuffer = gl.createBuffer();
 
@@ -55,7 +55,7 @@ function initPositionBuffer(gl) {
 
 // not used in this version of the code
 // see https://github.com/mdn/dom-examples/blob/main/webgl-examples/tutorial/sample6 instead!
-function initColorBuffer(gl) {
+function initColorBuffer(gl: WebGLRenderingContext) {
   const faceColors = [
     [1.0, 1.0, 1.0, 1.0], // Front face: white
     [1.0, 0.0, 0.0, 1.0], // Back face: red
@@ -67,9 +67,9 @@ function initColorBuffer(gl) {
 
   // Convert the array of colors into a table for all the vertices.
 
-  var colors = [];
+  let colors: number[] = [];
 
-  for (var j = 0; j < faceColors.length; ++j) {
+  for (let j = 0; j < faceColors.length; ++j) {
     const c = faceColors[j];
     // Repeat each color four times for the four vertices of the face
     colors = colors.concat(c, c, c, c);
@@ -82,7 +82,7 @@ function initColorBuffer(gl) {
   return colorBuffer;
 }
 
-function initIndexBuffer(gl) {
+function initIndexBuffer(gl: WebGLRenderingContext) {
   const indexBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
 
@@ -140,7 +140,7 @@ function initIndexBuffer(gl) {
   return indexBuffer;
 }
 
-function initTextureBuffer(gl) {
+function initTextureBuffer(gl: WebGLRenderingContext) {
   const textureCoordBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, textureCoordBuffer);
 
@@ -168,7 +168,7 @@ function initTextureBuffer(gl) {
   return textureCoordBuffer;
 }
 
-function initNormalBuffer(gl) {
+function initNormalBuffer(gl: WebGLRenderingContext) {
   const normalBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, normalBuffer);
 
