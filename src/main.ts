@@ -4,6 +4,7 @@ import './styles.css';
 import * as THREE from 'three';
 
 const scene = new THREE.Scene();
+
 const camera = new THREE.PerspectiveCamera(50, 800 / 600, 0.1, 1000);
 
 const renderer = new THREE.WebGLRenderer();
@@ -12,11 +13,11 @@ document.body.prepend(renderer.domElement);
 
 const texture = new THREE.TextureLoader().load('./tiger.png');
 texture.colorSpace = THREE.SRGBColorSpace;
-const geometry = new THREE.BoxGeometry(1, 1, 1);
 const material = new THREE.MeshPhysicalMaterial({
   map: texture,
   color: 0xffffff,
 });
+const geometry = new THREE.BoxGeometry(1, 1, 1);
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 
