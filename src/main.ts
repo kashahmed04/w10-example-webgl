@@ -10,7 +10,12 @@ import { Scene } from '@babylonjs/core/scene';
 
 import { StandardMaterial, Texture } from '@babylonjs/core';
 
+//go over all**
+
 // Get the canvas element from the DOM.
+// dont need canvas HTML element for three.js and we create canvas in JS but we need it for babylon and just using webgl like
+// we did in our main branch**
+// why did we not do a get context 'webgl' but we did in the main branch arent we still using webgl**
 const canvas = document.getElementById('canvas') as HTMLCanvasElement;
 canvas.width = 800;
 canvas.height = 600;
