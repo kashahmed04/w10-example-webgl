@@ -397,9 +397,11 @@ function isPowerOf2(value: number) {
  * webGL is not just used for 3D rendering and there a couple 2D libraries such as pixi.js and phaser which are two 2D libraries
  * pixi.js has a lot of different features and has good documentation and has lots of examples on how to work with things 
  * 
- * phaser is a game framework and it works with games in the DOM and pixi is graphics rendering and phaser is more game specific
+ * phaser is a game framework and it works with games in the DOM and pixi is graphics rendering and phaser is more game specific**
  * 
  * three.js, babylon.js, and REDGL2 are 3D rendering in WebGL (phaser and pixi.js are 2D and in WebGL)**
+ * 
+ * what is the checklist on slide 7 used for is it used to see if its reliable to use or**
  * 
  * 
  * 

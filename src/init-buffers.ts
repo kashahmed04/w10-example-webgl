@@ -55,7 +55,7 @@ function initPositionBuffer(gl: WebGLRenderingContext) {
 
 // not used in this version of the code
 // see https://github.com/mdn/dom-examples/blob/main/webgl-examples/tutorial/sample6 instead!
-function initColorBuffer(gl: WebGLRenderingContext) {
+function initBuffer(gl: WebGLRenderingContext) {
   const faceColors = [
     [1.0, 1.0, 1.0, 1.0], // Front face: white
     [1.0, 0.0, 0.0, 1.0], // Back face: red
