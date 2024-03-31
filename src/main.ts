@@ -41,6 +41,8 @@ camera.setTarget(Vector3.Zero());
 // what does the true do**
 camera.attachControl(canvas, true);
 
+//what does the true represent**
+
 // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
 // what does the coorindates say because it says 1,1,0 instead**
 const light = new HemisphericLight('light1', new Vector3(1, 1, 0), scene);
