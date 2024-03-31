@@ -13,24 +13,28 @@ import * as THREE from 'three';
 //why dont we say 'webgl' anywhere (like we did in babylon and main webgl when doing our get context)**
 //in here how does it know we are working with webgl with this library then**
 const scene = new THREE.Scene();
-//does scene represent making a canvas**
+//tree of all the things that are part of the renderer or scene (like that type of scene with
+//camera and add things to scene)
 
 const camera = new THREE.PerspectiveCamera(50, 800 / 600, 0.1, 1000);
 
 const renderer = new THREE.WebGLRenderer();
+//does scene represent making a canvas (yes)
 renderer.setSize(800, 600);
 document.body.prepend(renderer.domElement);
-//we never defined DOM element**
+//the renderer domelemnt is the canvas and we add the canvas to the body 
 
 const texture = new THREE.TextureLoader().load('./tiger.png');
 texture.colorSpace = THREE.SRGBColorSpace; //if we dont have this the whole canvas would look faded and this makes it look more cleaerer
-//and colorful (we only need this in three.js right)**
+//and colorful (we only need this in three.js right) (this is texture specific and in this case this was the color space
+//for the texture and if we are in photoshop we can import our images and it wont require a SRGB indicator)
 const material = new THREE.MeshPhysicalMaterial({
   map: texture,
   color: 0xffffff,
 });
 const geometry = new THREE.BoxGeometry(1, 1, 1);
-const cube = new THREE.Mesh(geometry, material);
+const cube = new THREE.Mesh(geometry, material); //use the box geometry for the and material for the surface
+//for the white and thats what we call our cube 
 scene.add(cube);
 
 const ambient = new THREE.AmbientLight(0xaaaaaa, 0.25);
@@ -40,19 +44,18 @@ const light = new THREE.PointLight(0xffffff, 50, 100);
 light.position.set(1, 2, 3);
 scene.add(light);
 
-//why did we define two lights here what does each do**
-
 camera.position.z = 2.5;
 
-//why did we use z-axis here**
+//why did we use z-axis here (we move the camera back because the camera would have started off right at the cube)
 
 const animate = () => {
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.01;
 
+  //change our scene and camera for adjustments and keep doing that over and over again
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
 };
 
-//calls animate initially to start the animation off then it loops from the requestanimationframe inside the animate method**
+//calls animate initially to start the animation off then it loops from the requestanimationframe inside the animate method
 animate();
