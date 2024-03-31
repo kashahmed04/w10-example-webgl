@@ -29,43 +29,49 @@ const engine = new Engine(canvas);
 const scene = new Scene(engine);
 
 // This creates and positions a free camera (non-mesh)
-// what does it mean a free camera and non-mesh**
+// free camera lets us move the arrows to see things in the scene 
+// the cubes are different sizes so the z-axis may not line up
 const camera = new FreeCamera('camera1', new Vector3(0, 0, -5), scene);
 
 // This targets the camera to scene origin
 // is the origin the middle of the screen or top left because we have canvas and canvas and JS are top left by default for origin**
 // where is origin in babylon.js and three.js and just webgl by default since they use canvas** 
+// canvas still has origin in upper left (screen coorindates) and this is different than world coordinates and
+// the world coorindates start in the middle (yes)
 camera.setTarget(Vector3.Zero());
 
 // This attaches the camera to the canvas
-// what does the true do**
+// attach the control to the canvas (by default nobody else can use the canvas events and babylon will eat the canvas
+// events and we wont get any input beyond camera movement)(when we say true other event literners will fire otherwise if we put
+// nothing for false this will only run and event listeners will get ignored)
 camera.attachControl(canvas, true);
 
-//what does the true represent**
 
 // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
 // what does the coorindates say because it says 1,1,0 instead**
 const light = new HemisphericLight('light1', new Vector3(1, 1, 0), scene);
 
-// Default intensity is 1. Let's dim the light a small amount
-// we still set it as 1 so how is it dimmed**
+// Default intensity is 1. Let's dim the light a small amount (this was set back comment was not updated)
 light.intensity = 1;
 
 // Create a grid material
 const material = new StandardMaterial('mat');
 const texture = new Texture('./tiger.png');
 material.diffuseTexture = texture;
-//is diffuseTexture built in**
+//diffuse texture applies tiger to the material
 
 // Our built-in 'cube' shape.
+// this creates the box of size 2 (smaller than other demos)
 const cube = CreateBox('cube1', { size: 2 }, scene);
 
 // Move the cube upward 1/2 its height
 cube.position.y = 0;
-//how did we know to make it 0 for the 1/2 of the height**
+//we set this to 0 because its world cooridinates not screen coorindates (when we set the canvas this was 
+// screen coordinaets)
 
 // Affect a material
 cube.material = material;
+//apply this to the cube 
 
 // Render every frame
 engine.runRenderLoop(() => {
@@ -74,6 +80,5 @@ engine.runRenderLoop(() => {
   scene.render();
 });
 
-//we dont have to do request animation frame because**
-//is this method built into babylon to run each frame (or is it the .render() that does the looping)**
-//does this work the same way as request animation frame**
+//.redner() is the equivilent of request animation frame (we jsut give it a function to do this and its based on the engine
+//on when that executes)
