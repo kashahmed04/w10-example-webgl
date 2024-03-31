@@ -297,7 +297,7 @@ function isPowerOf2(value: number) {
  * 
  * what does it mean that its almost openGL ES 2.0 / 3.0** (slide 1)**
  * 
- * this is a language to render 2D and 3D graphics and uses the canvas element with the WebGL API (we do get context with 
+ * this is a language to render 2D and 3D graphics and uses the canvas element with the WebGL API (we get context with 
  * WebGL in the quotes instead of 2D like we have been doing with canvas)**
  * 
  * so does webgl involve both the canavs API and webgl API in order to use webgl** (what other APIs are involved to use webgl)**
@@ -315,7 +315,8 @@ function isPowerOf2(value: number) {
  * uses webgl2 (which is ES 3.0 and webgl is ES 2.0)**(different versions of JS)** it says in the code we used webgl though
  * for ES 2.0**
  * 
- * uses glmatrix which**
+ * uses glmatrix which** (only in the main branch with just webgl and no other libraries right)**
+ * 
  * its a spinning RIT cube and te code is a lot for it 
  * what should we know if we dont have to know how the code works**
  * 
@@ -345,18 +346,27 @@ function isPowerOf2(value: number) {
  * 
  * SECOND BRANCH:
  * 
- * three.js exists and the next demo follows three.js and uses the npm paackage3** and if we have @types it means we are using
- * type libraries which give us typescript for libararies that dont use it on their own (usually somewhat out of date rather than
- * the JS version of libraries)**
+ * three.js exists and the next demo follows three.js and uses the npm package3** and if we have @types it means we are using
+ * type libraries which give us typescript for JS libararies that dont use TS on their own (usually somewhat out of date rather than
+ * the JS (updated)** version of libraries)**
  * 
- * we do import * as three from three to use the three.js library which gives us access to everying in thus library with a
+ * we do import * as three from three to use the three.js library which gives us access to everying in this library with a
  * single import statement** (slide 5)**
  * and we remove the rest of the files we are working with and we dont need a buffer, draw scene, or shaders for three.js and 
- * babylon.js because its already built in for us to use the methods in those files??**
+ * babylon.js because its already built in for us to use the methods in those libraries??**
  * 
  * we get canvas from renderer and we dont have one in the HTML and it gets created in JS when we render it and we use
  * the colorspace to have depth for colors otherwise it would look washed out so we have to say what color space the original
- * image is**
+ * image is in three.js usually**
+ * 
+ * for all webgl even these webgl libraries (2D (Pixi.js and phaser) and 3D (babylon.js and three.js))
+ * does it always involve the canvas API with the webgl API and we cant use webgl API without canvas API**
+ * 
+ * when it says it a high level wrapper around webgl does that mean that libraries for an API are usually a wrapper to the 
+ * API** (slide 5)**
+ * 
+ * so are babylon.js, three.js, Pixi.js, and phaser libraries all a wrapper around webgl (what about canvas since canvas API is involved
+ * in webgl API)**
  * 
  * we use the map: texture and the color as its baseline to
  * 
@@ -365,7 +375,7 @@ function isPowerOf2(value: number) {
  * 
  * babylon.js BRANCH 3:
  * 
- * THERE IS A DEFAULT COLOR FOR THE BACKGROUND AND THE CUBE IS MORE SHINIER as we rotate by default for babylon.js**
+ * THERE IS A NEW DEFAULT COLOR FOR THE BACKGROUND AND THE CUBE IS MORE SHINIER as we rotate by default for babylon.js**
  * we get more camera controls and we can move around to see parts of the cube with our (mouse or keys)**
  * 
  * code is similar to branch 2 in terms of**
@@ -376,17 +386,20 @@ function isPowerOf2(value: number) {
  * we set in canvas from HTML then pass it into JS then pass it into the engine and the attach control gets the mouse and camera input
  * on the camera and we set up light with hemouspheric light for babylon and we have light intensity and we load the texture for
  * the tiger face and we set the box and load the material and we give the engine a callback to do the rotation and the scene will do it per
- * frame**
+ * frame
  * 
  * babylon.js has examples as well as three.js and it focusses more on rendering and aspect of things compared to three.js
  * babylon.js playground and we can have rendered output and code and we can mess with code and see the output without
- * having an editor opened up**
+ * having an editor opened up
  * 
  * babylon is more clunkier than three.js and it works differently than webGL than three.js does (works more closer with webGL)**
  * 
  * go over slide 6**
  * 
  * babylon.js and three.js are still part of webgl but they are in 3D whereas pixi.js and phaser are also in webgl but they are in 2D**
+ * 
+ * webgl by itself (main branch) and babylon.js use HTML canvas element whereas three.js makes the canvas element in the JS to use
+ * it in the JS**
  * 
  * 
  * REDGL2:
@@ -401,7 +414,7 @@ function isPowerOf2(value: number) {
  * 
  * three.js, babylon.js, and REDGL2 are 3D rendering in WebGL (phaser and pixi.js are 2D and in WebGL)**
  * 
- * what is the checklist on slide 7 used for is it used to see if its reliable to use or**
+ * what is the checklist on slide 7 used for is it used to see if libraries are reliable to use or**
  * 
  * 
  * 
