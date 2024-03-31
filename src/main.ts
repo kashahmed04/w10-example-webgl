@@ -8,8 +8,10 @@ import * as THREE from 'three';
 
 //so for three.js only we dont need a canvas HTML element and we can set canvas element up here**
 //we still need canvas element for main branch and babylon though**
-//is the main branch just webgl whereas three.js and babylon.js are webgl with libraries attached to webgl to make it easier to code**
-//why dont we say 'webgl' anywhere in here how does it know we are working with webgl with this library then**
+//is the main branch just webgl whereas three.js and babylon.js are webgl with libraries attached to webgl to make it easier to code (wrapper
+//around main API are what libraries are)(are libraries only used for API's to make them easier to use)**
+//why dont we say 'webgl' anywhere (like we did in babylon and main webgl when doing our get context)**
+//in here how does it know we are working with webgl with this library then**
 const scene = new THREE.Scene();
 //does scene represent making a canvas**
 
@@ -22,7 +24,7 @@ document.body.prepend(renderer.domElement);
 
 const texture = new THREE.TextureLoader().load('./tiger.png');
 texture.colorSpace = THREE.SRGBColorSpace; //if we dont have this the whole canvas would look faded and this makes it look more cleaerer
-//and colorful**
+//and colorful (we only need this in three.js right)**
 const material = new THREE.MeshPhysicalMaterial({
   map: texture,
   color: 0xffffff,
@@ -42,6 +44,8 @@ scene.add(light);
 
 camera.position.z = 2.5;
 
+//why did we use z-axis here**
+
 const animate = () => {
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.01;
@@ -50,4 +54,5 @@ const animate = () => {
   requestAnimationFrame(animate);
 };
 
+//calls animate initially to start the animation off then it loops from the requestanimationframe inside the animate method**
 animate();
