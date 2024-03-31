@@ -298,14 +298,17 @@ function isPowerOf2(value: number) {
  * what does it mean that its almost openGL ES 2.0 / 3.0** (slide 1)**
  * 
  * this is a language to render 2D and 3D graphics and uses the canvas element with the WebGL API (we get context with 
- * WebGL in the quotes instead of 2D like we have been doing with canvas)**
+ * WebGL in the quotes instead of 2D like we have been doing with canvas)(webgl requires us to use a canvas)
  * 
  * so does webgl involve both the canavs API and webgl API in order to use webgl** (what other APIs are involved to use webgl)**
  * 
- * WebGL is very low level of** and we are interacting with our scene and we are**
+ * WebGL is very low level is close to machine code and is clunky and we have to do things manually
+ * and high level is more API's for things and a lot of things happen under the hood for us 
+ * the first version when we use webgl its complicated and we need to do everything and three.js and babylon.js
+ * which are engines they handle everything for us and under the hood it does everything for us 
+ * these are all engines for babylong, three, pixi, and phaser
  * 
- * at a local level WebGL it takes a lot of work to make a cube to spin around (we can add some libraries to make it easier
- * for us though like three.js and babylon.js)**
+ * at a local level WebGL it takes a lot of work to make a cube to spin around (we had to do everything manually)
  * 
  * each of these demos are on a different branch and we need to run npm install every time we move from branch to branch otherwise
  * it will break
@@ -346,24 +349,32 @@ function isPowerOf2(value: number) {
  * 
  * SECOND BRANCH:
  * 
- * three.js exists and the next demo follows three.js and uses the npm package3** and if we have @types it means we are using
+ * three.js exists and the next demo follows three.js and uses the npm package3 (the file in three.js)
+ * and if we have @types it means we are using
  * type libraries which give us typescript for JS libararies that dont use TS on their own (usually somewhat out of date rather than
- * the JS (updated)** version of libraries)**
+ * the JS (updated) version of libraries)
+ * 
+ * definate type script types provides typescript for us for the JS version and if a new JS version comes out
+ * it will take a bit for the TS to catch up so at times the TS could be incorrect 
  * 
  * we do import * as three from three to use the three.js library which gives us access to everying in this library with a
- * single import statement** (slide 5)**
- * and we remove the rest of the files we are working with and we dont need a buffer, draw scene, or shaders for three.js and 
- * babylon.js because its already built in for us to use the methods in those libraries??**
+ * single import statement
+ * import happens at author time not run time and the import statements go into node modules folder and gets things
+ * related to library and if we import something and never use it then it gets eliminated when we go to build 
+ * and the compiler should weed out the things we dont use but if we import specific things we need to use
+ * then it does not need to do this but we can do either
  * 
  * we get canvas from renderer and we dont have one in the HTML and it gets created in JS when we render it and we use
  * the colorspace to have depth for colors otherwise it would look washed out so we have to say what color space the original
- * image is in three.js usually**
+ * image is in three.js usually (yes)
+ * newgl.three renderer and this tells us its a webgl renderer (we dont have to decalre our canvas and three.js does that
+ * under the hood for us)
  * 
  * for all webgl even these webgl libraries (2D (Pixi.js and phaser) and 3D (babylon.js and three.js))
  * does it always involve the canvas API with the webgl API and we cant use webgl API without canvas API**
  * 
- * when it says it a high level wrapper around webgl does that mean that libraries for an API are usually a wrapper to the 
- * API** (slide 5)**
+ * when it says it a high level wrapper around webgl its things under the hood (indirectly getting things
+ * and we dont have to write our own shaders or anything)
  * 
  * so are babylon.js, three.js, Pixi.js, and phaser libraries all a wrapper around webgl (what about canvas since canvas API is involved
  * in webgl API)**
@@ -414,7 +425,7 @@ function isPowerOf2(value: number) {
  * 
  * three.js, babylon.js, and REDGL2 are 3D rendering in WebGL (phaser and pixi.js are 2D and in WebGL)**
  * 
- * what is the checklist on slide 7 used for is it used to see if libraries are reliable to use or**
+ * what is the checklist on slide 7 used for is it used to see if libraries are reliable to use (yes)
  * 
  * 
  * 
