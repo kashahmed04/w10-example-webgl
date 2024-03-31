@@ -427,7 +427,7 @@ function isPowerOf2(value: number) {
  * 
  * what is the checklist on slide 7 used for is it used to see if libraries are reliable to use (yes)
  * 
- * 
+ * phaser and babylon are game engine and three.js is rendering engine and pixi.js is 3D graphics
  * 
  * 
  */
